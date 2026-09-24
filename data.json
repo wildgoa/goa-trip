@@ -79,6 +79,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790264006848
+  },
+  {
+   "id": "emufq375h9u8s",
+   "date": "2026-09-24",
+   "amount": 5119,
+   "orig": null,
+   "cat": "stay",
+   "note": "Airbnb - 1",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790265892085
   }
  ]
 }
