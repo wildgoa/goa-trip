@@ -4,7 +4,7 @@
   "name": "Goa",
   "start": "2026-09-25",
   "end": "2026-09-27",
-  "budget": 48999.999599999996,
+  "budget": 60000,
   "currency": "INR",
   "members": [
    "Saral",
@@ -18,7 +18,7 @@
    "code": "",
    "rate": 0
   },
-  "contribution": 8166.6666
+  "contribution": 10000
  },
  "categories": [
   {
