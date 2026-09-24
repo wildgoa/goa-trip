@@ -57,5 +57,17 @@
    "limit": 0
   }
  ],
- "expenses": []
+ "expenses": [
+  {
+   "id": "emuffafr7yjlk",
+   "date": "2026-09-24",
+   "amount": 10319,
+   "orig": null,
+   "cat": "travel",
+   "note": "HYD - GOA",
+   "pay": "UPI",
+   "pre": true,
+   "t": 1790247754051
+  }
+ ]
 }
