@@ -68,6 +68,17 @@
    "pay": "UPI",
    "pre": true,
    "t": 1790247754051
+  },
+  {
+   "id": "emufoyshsty2k",
+   "date": "2026-09-24",
+   "amount": 1510,
+   "orig": null,
+   "cat": "travel",
+   "note": "Dinner",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790264006848
   }
  ]
 }
