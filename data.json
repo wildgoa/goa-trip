@@ -68,17 +68,6 @@
    "pay": "UPI",
    "pre": true,
    "t": 1790247754051
-  },
-  {
-   "id": "emuffb2donkge",
-   "date": "2026-09-24",
-   "amount": 3200,
-   "orig": null,
-   "cat": "misc",
-   "note": "Diesel (Round Trip)",
-   "pay": "UPI",
-   "pre": true,
-   "t": 1790247783372
   }
  ]
 }
