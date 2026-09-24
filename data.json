@@ -1,0 +1,73 @@
+{
+ "v": 1,
+ "trip": {
+  "name": "Goa",
+  "start": "2026-09-25",
+  "end": "2026-09-27",
+  "budget": 60000,
+  "currency": "INR",
+  "members": [
+   "Saral",
+   "Abdul",
+   "Abhinav",
+   "Harshith",
+   "Soumith",
+   "Tejaswi"
+  ],
+  "fx": {
+   "code": "",
+   "rate": 0
+  },
+  "contribution": 10000
+ },
+ "categories": [
+  {
+   "id": "travel",
+   "name": "Travel",
+   "limit": 0
+  },
+  {
+   "id": "stay",
+   "name": "Stay",
+   "limit": 0
+  },
+  {
+   "id": "food",
+   "name": "Food",
+   "limit": 0
+  },
+  {
+   "id": "transport",
+   "name": "Local transport",
+   "limit": 0
+  },
+  {
+   "id": "activities",
+   "name": "Activities",
+   "limit": 0
+  },
+  {
+   "id": "shopping",
+   "name": "Shopping",
+   "limit": 0
+  },
+  {
+   "id": "misc",
+   "name": "Misc",
+   "limit": 0
+  }
+ ],
+ "expenses": [
+  {
+   "id": "emufc5lwut3ko",
+   "date": "2026-09-24",
+   "amount": 10319,
+   "orig": null,
+   "cat": "travel",
+   "note": "",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790242489902
+  }
+ ]
+}
