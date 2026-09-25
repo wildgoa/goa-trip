@@ -249,6 +249,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790358771132
+  },
+  {
+   "id": "emuhbrnq9sdus",
+   "date": "2026-09-26",
+   "amount": 810,
+   "orig": null,
+   "cat": "food",
+   "note": "Ice Creams",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790362771425
   }
  ]
 }
