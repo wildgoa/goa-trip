@@ -139,6 +139,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790322835104
+  },
+  {
+   "id": "emugo9oqranf7",
+   "date": "2026-09-25",
+   "amount": 830,
+   "orig": null,
+   "cat": "cmufvyqzc",
+   "note": "Ciggi",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790323301763
   }
  ]
 }
