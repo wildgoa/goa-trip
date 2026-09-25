@@ -172,6 +172,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790343354918
+  },
+  {
+   "id": "emuh2wb6mtukt",
+   "date": "2026-09-25",
+   "amount": 10000,
+   "orig": null,
+   "cat": "travel",
+   "note": "PRE BOOK (Goa - Hyd)",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790347871902
   }
  ]
 }
