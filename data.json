@@ -106,6 +106,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790315706232
+  },
+  {
+   "id": "emugjrvv51u6n",
+   "date": "2026-09-25",
+   "amount": 1000,
+   "orig": null,
+   "cat": "transport",
+   "note": "Petrol",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790315752721
   }
  ]
 }
