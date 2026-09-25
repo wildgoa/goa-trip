@@ -194,6 +194,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790348438847
+  },
+  {
+   "id": "emuh3bs642sl6",
+   "date": "2026-09-25",
+   "amount": 2584,
+   "orig": null,
+   "cat": "food",
+   "note": "Dinner, Alcohol",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790348593756
   }
  ]
 }
