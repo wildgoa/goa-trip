@@ -95,6 +95,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790265892085
+  },
+  {
+   "id": "emugjqvzs1kpj",
+   "date": "2026-09-25",
+   "amount": 5700,
+   "orig": null,
+   "cat": "transport",
+   "note": "Scooty Rental",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790315706232
   }
  ]
 }
