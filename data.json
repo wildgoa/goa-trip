@@ -315,6 +315,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790420518757
+  },
+  {
+   "id": "emuia5oonur1g",
+   "date": "2026-09-26",
+   "amount": 690,
+   "orig": null,
+   "cat": "cmufvyqzc",
+   "note": "Daaru",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790420532791
   }
  ]
 }
