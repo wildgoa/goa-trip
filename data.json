@@ -260,6 +260,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790362771425
+  },
+  {
+   "id": "emuhzmn5a4oo0",
+   "date": "2026-09-26",
+   "amount": 708,
+   "orig": null,
+   "cat": "food",
+   "note": "McDonald’s",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790402848175
   }
  ]
 }
