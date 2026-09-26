@@ -271,6 +271,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790402848175
+  },
+  {
+   "id": "emui4iirj6yoo",
+   "date": "2026-09-26",
+   "amount": 160,
+   "orig": null,
+   "cat": "food",
+   "note": "Water bottles, Cool drinks",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790411053951
   }
  ]
 }
