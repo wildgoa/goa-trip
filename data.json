@@ -392,6 +392,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790446059693
+  },
+  {
+   "id": "emuiqoeplcmyl",
+   "date": "2026-09-27",
+   "amount": 920,
+   "orig": null,
+   "cat": "food",
+   "note": "Dinner",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790448280185
   }
  ]
 }
