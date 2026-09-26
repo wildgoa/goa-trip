@@ -359,6 +359,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790435332850
+  },
+  {
+   "id": "emuiiz9q5wzel",
+   "date": "2026-09-26",
+   "amount": 520,
+   "orig": null,
+   "cat": "food",
+   "note": "Maggie",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790435350013
   }
  ]
 }
