@@ -337,6 +337,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790421069527
+  },
+  {
+   "id": "emuid52ry8tn7",
+   "date": "2026-09-26",
+   "amount": 1800,
+   "orig": null,
+   "cat": "activities",
+   "note": "Boating",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790425543247
   }
  ]
 }
