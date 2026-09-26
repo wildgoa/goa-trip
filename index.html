@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<title>Goa</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2236%22 fill=%22none%22 stroke=%22black%22 stroke-width=%2214%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap">
+<style>
+:root{--bg:#FFFFFF;--fg:#000000;--muted:#6E6E6E;--line:#E6E6E6;--soft:#F5F5F5;--track:#EDEDED;
+  --s0:#000000;--s1:#3A3A3A;--s2:#5C5C5C;--s3:#7E7E7E;--s4:#A0A0A0;--s5:#BDBDBD;--s6:#D4D4D4;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--fg:#FFFFFF;--muted:#8E8E8E;--line:#242424;--soft:#0F0F0F;--track:#1B1B1B;--s0:#FFFFFF;--s1:#D2D2D2;--s2:#AAAAAA;--s3:#848484;--s4:#646464;--s5:#4A4A4A;--s6:#363636}}
+:root[data-theme="dark"]{--bg:#000000;--fg:#FFFFFF;--muted:#8E8E8E;--line:#242424;--soft:#0F0F0F;--track:#1B1B1B;--s0:#FFFFFF;--s1:#D2D2D2;--s2:#AAAAAA;--s3:#848484;--s4:#646464;--s5:#4A4A4A;--s6:#363636}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Geist,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;font-feature-settings:"tnum";-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.wrap{max-width:540px;margin:0 auto;padding:0 20px}
+header.wrap{padding-top:20px}
+.top{display:flex;align-items:flex-start;gap:12px}
+.top h1{font-weight:600;font-size:22px;line-height:1.2;letter-spacing:-.01em;margin:0}
+.sub{color:var(--muted);font-size:13px;margin-top:2px}
+.pill{display:inline-block;margin-top:8px;font-size:12px;padding:2px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.icon-btn{margin-left:auto;flex:none;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:transparent;display:grid;place-items:center}
+.ring-wrap{position:relative;width:min(250px,70vw);aspect-ratio:1;margin:26px auto 10px}
+.ring-wrap svg{width:100%;height:100%;display:block}
+.ring-g{transform-origin:120px 120px;animation:ringIn 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ringIn{from{opacity:0;transform:rotate(-30deg)}}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 18%}
+.big{font-weight:300;font-size:clamp(30px,10vw,44px);line-height:1;letter-spacing:-.03em}
+.rc-l{color:var(--muted);font-size:13px;margin-top:8px}
+.rc-p{font-size:12px;margin-top:10px;padding:2px 10px;border:1px solid var(--fg);border-radius:999px}
+.rc-p.inv{background:var(--fg);color:var(--bg)}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:12px;color:var(--muted);margin:4px 0 0}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:12px 0 12px 12px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat .v{font-weight:500;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat .l{font-size:12px;color:var(--muted)}
+main.wrap{padding-top:18px;padding-bottom:120px}
+.alert{border:1px solid var(--fg);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:14px}
+.alert.inv{background:var(--fg);color:var(--bg)}
+.tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin:10px 0 16px;overflow-x:auto}
+.tabs button{border:0;background:transparent;color:var(--muted);padding:10px 0;margin-bottom:-1px;border-bottom:2px solid transparent;font-weight:500;font-size:14px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--fg)}
+.sec{font-weight:600;font-size:14px;margin:18px 0 10px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.tools{display:flex;gap:8px;margin-bottom:4px}
+.tools input{flex:1.4}.tools select{flex:1}
+.day{display:flex;justify-content:space-between;margin:20px 0 2px;font-size:12px;color:var(--muted)}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:transparent;width:100%;text-align:left}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.row .body{min-width:0;flex:1}
+.row .t{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .m{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .a{font-weight:500;white-space:nowrap;text-align:right}
+.row .a small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.card h3{margin:0 0 6px;font-size:14px;font-weight:600}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
+.kv:first-of-type{border-top:0}
+.kv b{font-weight:500}
+.kv.total{border-top:1px solid var(--fg)}
+.kv.total b,.kv.total span{font-weight:600}
+.cat{padding:12px 0;border-bottom:1px solid var(--line)}
+.cat-line{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cat-line .n{font-weight:500;flex:1}
+.cat-line .s{font-size:13px;color:var(--muted)}
+.bar{height:4px;background:var(--track);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--fg)}
+.hero-n{font-weight:300;font-size:34px;letter-spacing:-.02em;line-height:1.1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.mini{padding:12px 0;border-bottom:1px solid var(--line)}
+.mini:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+.mini .v{font-weight:500;font-size:18px}
+.mini .l{font-size:12px;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:36px 12px}
+.setup{border:1px solid var(--line);border-radius:14px;padding:24px;text-align:center}
+.setup h2{font-weight:600;font-size:20px;margin:0 0 6px}
+.setup p{color:var(--muted);margin:0 0 18px}
+.hint{font-size:12px;color:var(--muted);margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--fg);border-radius:999px;padding:13px 22px;font-weight:600;font-size:15px;background:var(--fg);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--fg)}
+.btn:disabled{opacity:.5}
+.fab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;padding:14px 28px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.scrim{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);width:100%;max-width:540px;max-height:92vh;max-height:92dvh;overflow:auto;border-radius:20px 20px 0 0;border-top:1px solid var(--line);padding:18px 20px calc(20px + env(safe-area-inset-bottom,0px));animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(20px);opacity:.5}}
+.sheet-h{display:flex;align-items:center;justify-content:space-between}
+.sheet-h h2{margin:0;font-weight:600;font-size:18px}
+.x{border:1px solid var(--line);background:transparent;width:36px;height:36px;border-radius:999px;font-size:15px}
+.f{display:block;margin:16px 0 6px;font-weight:500;font-size:13px;color:var(--muted)}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--fg);font:16px Geist,system-ui,sans-serif}
+select option{background:var(--bg);color:var(--fg)}
+input:focus,select:focus{border-color:var(--fg);outline:none}
+.amt{display:flex;gap:8px;align-items:stretch}
+.amt input{font-weight:300;font-size:34px;letter-spacing:-.02em;padding:6px 12px}
+.amt select{width:auto;flex:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-block;padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;cursor:pointer;user-select:none}
+.chip input:checked+span{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip input:focus-visible+span{outline:2px solid var(--fg);outline-offset:2px}
+.check{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:14px}
+.check input{width:18px;height:18px;accent-color:var(--fg)}
+.lim{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.lim span{flex:1;font-size:14px}.lim input{width:130px}
+.actions{display:flex;gap:8px;margin-top:22px}
+.actions .btn{flex:1}
+.err{font-size:14px;margin-top:10px;min-height:1em;font-weight:500}
+.toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:80;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:500;font-size:14px;max-width:90vw}
+html,body{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+*{-webkit-tap-highlight-color:transparent}
+.ring-wrap{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+@media (prefers-reduced-motion:reduce){.ring-g,.sheet{animation:none}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+(function(){
+'use strict';
+/* ====== SETTINGS: change these to match your GitHub repo ====== */
+var CONFIG={owner:'Wildgoa',repo:'goa-trip',branch:'main',path:'data.json'};
+/* =============================================================== */
+var API='https://api.github.com/repos/'+CONFIG.owner+'/'+CONFIG.repo;
+var CURRENCIES=['INR','USD','EUR','GBP','AED','THB','SGD','MYR','LKR','NPR','IDR','VND','JPY','AUD','CAD','CHF'];
+var PAY=['Cash','UPI','Card'];
+var state=null,sha=null,loadErr=false,saving=false,q='',catFilter='all';
+var token=ls('trip-token'),canWrite=!!token;
+var root=document.getElementById('root');
+var host=document.createElement('div');document.body.appendChild(host);
+
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function sum(a){return a.reduce(function(x,y){return x+(+y||0)},0)}
+function money(n,code,dec){code=code||state.trip.currency;var loc=code==='INR'?'en-IN':'en-US';
+  try{return new Intl.NumberFormat(loc,{style:'currency',currency:code,maximumFractionDigits:dec?2:0,minimumFractionDigits:0}).format(n||0)}catch(e){return code+' '+Math.round(n||0)}}
+function pad(n){return(n<10?'0':'')+n}
+function todayISO(){var d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function dnum(iso){var p=iso.split('-');return Date.UTC(+p[0],+p[1]-1,+p[2])/864e5}
+function daysBetween(a,b){return Math.round(dnum(b)-dnum(a))}
+function fmtD(iso){return new Date(iso+'T00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'})}
+function fmtDay(iso){return new Date(iso+'T00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'})}
+function uid(){return 'e'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function plural(n,w){return n+' '+w+(n===1?'':'s')}
+function people(){return Math.max(state.trip.members.length,1)}
+function budget(){var t=state.trip;return t.budget>0?t.budget:(t.contribution||0)*people()}
+function allCats(){var known={},out=state.categories.slice();state.categories.forEach(function(c){known[c.id]=1});
+  state.expenses.forEach(function(e){if(!known[e.cat]){known[e.cat]=1;out.push({id:e.cat,name:'Other',limit:0})}});return out}
+function catOf(id){var a=allCats();for(var i=0;i<a.length;i++)if(a[i].id===id)return a[i];return{id:id,name:'Other',limit:0}}
+function shade(id){var a=allCats();for(var i=0;i<a.length;i++)if(a[i].id===id)return'var(--s'+(i%7)+')';return'var(--s6)'}
+
+/* ---------- GitHub sync ---------- */
+function b64dec(b){var bin=atob(b.replace(/\s/g,'')),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return new TextDecoder().decode(u)}
+function b64enc(s){var u=new TextEncoder().encode(s),bin='';for(var i=0;i<u.length;i+=8192)bin+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(bin)}
+function ghHeaders(json){var h={'Accept':'application/vnd.github+json'};if(token)h.Authorization='Bearer '+token;if(json)h['Content-Type']='application/json';return h}
+function migrate(d){if(d.trip&&!(d.trip.budget>0)&&d.trip.contribution>0&&d.trip.members)d.trip.budget=d.trip.contribution*d.trip.members.length;d.trip=d.trip||{};d.trip.members=d.trip.members&&d.trip.members.length?d.trip.members:['Me'];d.trip.currency=d.trip.currency||'INR';d.trip.fx=d.trip.fx||{code:'',rate:0};
+  if(!(d.trip.contribution>0)&&d.trip.budget>0)d.trip.contribution=Math.round(d.trip.budget/d.trip.members.length);d.categories=d.categories||[];d.expenses=d.expenses||[];return d}
+function apply(d){migrate(d);loadErr=false;if(state&&JSON.stringify(state)===JSON.stringify(d))return;state=d;render()}
+function load(){
+  return fetch(API+'/contents/'+CONFIG.path+'?ref='+CONFIG.branch+'&t='+Date.now(),{headers:ghHeaders(),cache:'no-store'})
+    .then(function(r){
+      if(r.status===401&&token){lock();toast('Your GitHub token stopped working. Editing is locked.');return load()}
+      if(!r.ok)throw new Error('api '+r.status);
+      return r.json().then(function(j){sha=j.sha;apply(JSON.parse(b64dec(j.content)))});
+    })
+    .catch(function(){
+      return fetch(CONFIG.path+'?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('pages');return r.json()}).then(apply);
+    })
+    .catch(function(){if(!state){loadErr=true;render()}});
+}
+function save(next,msg){
+  if(!canWrite||saving)return;
+  saving=true;setBusy(true);
+  var body={message:msg+', '+new Date().toLocaleString('en-IN'),content:b64enc(JSON.stringify(next,null,1)),branch:CONFIG.branch};
+  if(sha)body.sha=sha;
+  fetch(API+'/contents/'+CONFIG.path,{method:'PUT',headers:ghHeaders(true),body:JSON.stringify(body)})
+    .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{r:r,j:j}})})
+    .then(function(x){
+      if(x.r.ok){sha=x.j.content&&x.j.content.sha;state=migrate(next);closeSheet();render();toast(msg);return}
+      if(x.r.status===409||(x.r.status===422&&/sha/i.test(x.j.message||''))){closeSheet();toast('The data changed elsewhere. Loaded the latest, try again.');return load()}
+      if(x.r.status===401){lock();closeSheet();toast('Your GitHub token stopped working. Unlock editing again.');return}
+      if(x.r.status===403||x.r.status===404)return formErr('GitHub refused the save. Check the token has Contents read and write access to the '+CONFIG.repo+' repo.');
+      formErr('Couldn\'t save ('+x.r.status+'). Try again.');
+    })
+    .catch(function(){formErr('Couldn\'t save. Check your connection and try again.')})
+    .then(function(){saving=false;setBusy(false)});
+}
+function lock(){token=null;canWrite=false;ls('trip-token',null);render()}
+
+/* ---------- screen ---------- */
+function calc(){
+  var t=state.trip,b=budget(),ex=state.expenses,total=sum(ex.map(function(e){return e.amount}));
+  var byCat={};ex.forEach(function(e){byCat[e.cat]=(byCat[e.cat]||0)+e.amount});
+  var today=todayISO(),spentToday=sum(ex.filter(function(e){return !e.pre&&e.date===today}).map(function(e){return e.amount}));
+  var info=null,allowance=null,leftToday=null;
+  if(t.start&&t.end&&t.end>=t.start){
+    var N=daysBetween(t.start,t.end)+1;
+    if(today<t.start){info={phase:'before',N:N,until:daysBetween(today,t.start)};allowance=(b-total)/N}
+    else if(today>t.end){info={phase:'after',N:N}}
+    else{var k=daysBetween(t.start,today)+1,left=N-k+1;allowance=(b-(total-spentToday))/left;leftToday=allowance-spentToday;info={phase:'during',N:N,k:k}}
+  }
+  return{total:total,budget:b,byCat:byCat,spentToday:spentToday,info:info,allowance:allowance,leftToday:leftToday,remaining:b-total,pct:b>0?total/b:0};
+}
+function ringSvg(c){
+  var R=100,C=2*Math.PI*R,sw=14,segs='',off=0,scale=Math.max(c.budget,c.total)||1;
+  allCats().forEach(function(cat){
+    var v=c.byCat[cat.id]||0;if(v<=0)return;
+    var len=v/scale*C,gap=len>6?3:0;
+    segs+='<circle cx="120" cy="120" r="'+R+'" fill="none" stroke="'+shade(cat.id)+'" stroke-width="'+sw+'" stroke-dasharray="'+Math.max(len-gap,.01).toFixed(2)+' '+C.toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'" transform="rotate(-90 120 120)"/>';
+    off+=len;
+  });
+  var over=c.budget>0&&c.total>c.budget?'<circle cx="120" cy="120" r="116" fill="none" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 4"/>':'';
+  return '<svg viewBox="0 0 240 240" role="img" aria-label="Budget ring: '+Math.round(c.pct*100)+' percent spent"><circle cx="120" cy="120" r="'+R+'" fill="none" stroke="var(--track)" stroke-width="'+sw+'"/><g class="ring-g">'+segs+'</g>'+over+'</svg>';
+}
+function head(c){
+  var t=state.trip,sub='';
+  if(c.info){var range=fmtD(t.start)+' to '+fmtD(t.end);
+    sub=c.info.phase==='before'?range+', starts in '+plural(c.info.until,'day'):c.info.phase==='during'?range+', day '+c.info.k+' of '+c.info.N:range+', trip finished';}
+  else if(canWrite)sub='Add your trip dates in settings';
+  var center;
+  if(c.budget>0){
+    center=c.remaining>=0
+      ?'<div class="big">'+esc(money(c.remaining))+'</div><div class="rc-l">left of '+esc(money(c.budget))+'</div><div class="rc-p">'+Math.round(c.pct*100)+'% spent</div>'
+      :'<div class="big">'+esc(money(-c.remaining))+'</div><div class="rc-l">over the '+esc(money(c.budget))+' budget</div><div class="rc-p inv">Over budget</div>';
+  }else center='<div class="big">'+esc(money(c.total))+'</div><div class="rc-l">spent so far</div>';
+  var s2;
+  if(c.info&&c.info.phase==='during')s2=['Left for today',c.leftToday];
+  else if(c.info&&c.info.phase==='before')s2=['Daily budget',c.allowance];
+  else if(c.info&&c.info.phase==='after')s2=['Average a day',c.total/c.info.N];
+  else s2=['Spent today',c.spentToday];
+  var legend=allCats().filter(function(k){return(c.byCat[k.id]||0)>0}).map(function(k){return'<span><i style="background:'+shade(k.id)+'"></i>'+esc(k.name)+'</span>'}).join('');
+  return '<header class="wrap"><div class="top"><div><h1>'+esc(t.name||'Our trip')+'</h1>'+(sub?'<div class="sub">'+esc(sub)+'</div>':'')+(canWrite?'':'<span class="pill">View only</span>')+'</div>'
+    +(canWrite?'<button class="icon-btn" data-act="settings" aria-label="Trip settings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>':'')
+    +'</div><div class="ring-wrap">'+ringSvg(c)+'<div class="ring-center">'+center+'</div></div>'
+    +(legend?'<div class="legend">'+legend+'</div>':'')
+    +'<div class="stats"><div class="stat"><div class="v">'+esc(money(c.total))+'</div><div class="l">Spent</div></div>'
+    +'<div class="stat"><div class="v">'+esc(money(s2[1]))+'</div><div class="l">'+esc(s2[0])+'</div></div>'
+    +'<div class="stat"><div class="v">'+esc(money(c.total/people()))+'</div><div class="l">Per person</div></div></div></header>';
+}
+function alerts(c){
+  var out='';
+  if(c.budget>0&&c.pct>=1)out+='<div class="alert inv">Over budget by '+esc(money(c.total-c.budget))+', about '+esc(money((c.total-c.budget)/people()))+' more per person.</div>';
+  else if(c.budget>0&&c.pct>=.8)out+='<div class="alert">'+Math.round(c.pct*100)+'% of the budget is used. '+esc(money(c.remaining))+' left.</div>';
+  state.categories.forEach(function(k){if(!k.limit)return;var v=c.byCat[k.id]||0,p=v/k.limit;
+    if(p>=1)out+='<div class="alert inv">'+esc(k.name)+' is over its limit: '+esc(money(v))+' of '+esc(money(k.limit))+'.</div>';
+    else if(p>=.8)out+='<div class="alert">'+esc(k.name)+' is at '+Math.round(p*100)+'% of its '+esc(money(k.limit))+' limit.</div>';});
+  return out;
+}
+function render(){
+  if(!state){root.innerHTML='<main class="wrap" style="padding-top:40vh"><div class="empty">'+(loadErr?'Couldn\'t load the trip. Check your connection and refresh.':'Loading the trip…')+'</div></main>';return}
+  document.title=state.trip.name||'Our trip';
+  var c=calc(),main,ready=c.budget>0||state.expenses.length;
+  if(!ready){
+    main=canWrite?'<div class="setup"><h2>Set up the trip</h2><p>Add how much each person put in, the dates and who\'s coming.</p><button class="btn" data-act="settings">Set up trip</button></div>'
+      :'<div class="setup"><h2>Nothing here yet</h2><p>This page updates automatically once the trip is set up.</p></div>';
+  }else{
+    var opts='<option value="all">All categories</option>'+allCats().map(function(k){return'<option value="'+esc(k.id)+'"'+(catFilter===k.id?' selected':'')+'>'+esc(k.name)+'</option>'}).join('');
+    main=alerts(c)+'<h2 class="sec">Expenses</h2><div class="tools"><input type="search" id="q" placeholder="Search" value="'+esc(q)+'" aria-label="Search expenses"><select id="cf" aria-label="Filter by category">'+opts+'</select></div><div id="list"></div>';
+  }
+  var focused=document.activeElement&&document.activeElement.id==='q';
+  root.innerHTML=head(c)+'<main class="wrap">'+main+'</main>'+(canWrite&&ready?'<button class="btn fab" data-act="add">Add expense</button>':'');
+  renderList();
+  if(focused){var qi=document.getElementById('q');if(qi){qi.focus();qi.setSelectionRange(qi.value.length,qi.value.length)}}
+}
+function renderList(){
+  var el=document.getElementById('list');if(!el)return;
+  var qq=q.trim().toLowerCase();
+  var ex=state.expenses.filter(function(e){if(catFilter!=='all'&&e.cat!==catFilter)return false;if(!qq)return true;return((e.note||'')+' '+catOf(e.cat).name+' '+e.pay).toLowerCase().indexOf(qq)>=0});
+  if(!ex.length){el.innerHTML='<div class="empty">'+(state.expenses.length?'No expenses match.':canWrite?'No expenses yet. Tap Add expense to log the first one.':'No expenses yet.')+'</div>';return}
+  ex.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:(b.t||0)-(a.t||0)});
+  var groups={},order=[];
+  ex.forEach(function(e){var g=e.pre?'pre':e.date;if(!groups[g]){groups[g]=[];order.push(g)}groups[g].push(e)});
+  order.sort(function(a,b){if(a==='pre')return 1;if(b==='pre')return -1;return a<b?1:-1});
+  el.innerHTML=order.map(function(g){var list=groups[g];
+    return'<div class="day"><span>'+(g==='pre'?'Booked before the trip':esc(fmtDay(g)))+'</span><span>'+esc(money(sum(list.map(function(e){return e.amount}))))+'</span></div>'+list.map(rowHtml).join('')}).join('');
+}
+function rowHtml(e){
+  var k=catOf(e.cat),tag=canWrite?'button':'div';
+  var meta=(e.note?k.name+', ':'')+e.pay+(e.pre&&e.date?', '+fmtD(e.date):'');
+  var orig=e.orig&&e.orig.code!==state.trip.currency?'<small>'+esc(money(e.orig.amt,e.orig.code,true))+'</small>':'';
+  return'<'+tag+' class="row"'+(canWrite?' data-act="edit" data-id="'+esc(e.id)+'"':'')+'><span class="dot" style="background:'+shade(k.id)+'"></span><span class="body"><div class="t">'+esc(e.note||k.name)+'</div><div class="m">'+esc(meta)+'</div></span><span class="a">'+esc(money(e.amount,null,e.amount%1!==0))+orig+'</span></'+tag+'>';
+}
+
+/* ---------- sheets ---------- */
+function openSheet(title,body){host.innerHTML='<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true" aria-label="'+esc(title)+'"><div class="sheet-h"><h2>'+esc(title)+'</h2><button class="x" data-act="close" aria-label="Close">✕</button></div>'+body+'</div></div>';
+  var f=host.querySelector('[autofocus]');if(f)setTimeout(function(){f.focus()},60);}
+function closeSheet(){host.innerHTML=''}
+
+var LOCK='lock.json',ITER=600000;
+function u8b64(u){var bin='';for(var i=0;i<u.length;i++)bin+=String.fromCharCode(u[i]);return btoa(bin)}
+function b64u8(s){var bin=atob(s),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u}
+function pinKey(pin,salt,iter){return crypto.subtle.importKey('raw',new TextEncoder().encode(pin),'PBKDF2',false,['deriveKey']).then(function(k){
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:iter,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])})}
+function sealToken(tok,pin){var salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
+  return pinKey(pin,salt,ITER).then(function(k){return crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,new TextEncoder().encode(tok))})
+    .then(function(ct){return{v:1,iter:ITER,salt:u8b64(salt),iv:u8b64(iv),ct:u8b64(new Uint8Array(ct))}})}
+function openToken(lk,pin){return pinKey(pin,b64u8(lk.salt),lk.iter||ITER).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:b64u8(lk.iv)},k,b64u8(lk.ct))})
+  .then(function(pt){return new TextDecoder().decode(pt)})}
+var lockInfo=null;
+var PIN_HASH='EPB3UtpT14Zl3deQ4oyyFzn2hkSV5FtpTGg8Zu1E80w=';
+function pinMatches(pin){return crypto.subtle.importKey('raw',new TextEncoder().encode(pin),'PBKDF2',false,['deriveBits']).then(function(k){
+  return crypto.subtle.deriveBits({name:'PBKDF2',salt:new TextEncoder().encode('goa-trip-pin-v1'),iterations:ITER,hash:'SHA-256'},k,256)}).then(function(b){return u8b64(new Uint8Array(b))===PIN_HASH})}
+function getLock(){
+  return fetch(API+'/contents/'+LOCK+'?ref='+CONFIG.branch+'&t='+Date.now(),{headers:{'Accept':'application/vnd.github+json'},cache:'no-store'})
+    .then(function(r){if(r.status===404)return null;if(!r.ok)throw new Error('api');return r.json().then(function(j){return{data:JSON.parse(b64dec(j.content)),sha:j.sha}})})
+    .catch(function(){return fetch(LOCK+'?t='+Date.now(),{cache:'no-store'}).then(function(r){if(r.status===404)return null;if(!r.ok)throw new Error('net');return r.json().then(function(d){return{data:d}})})});
+}
+function adminTap(){
+  openSheet('Admin','<div class="empty" style="padding:24px 0">Checking…</div>');
+  getLock().then(function(l){lockInfo=l;if(l&&l.data&&l.data.ct)pinForm();else setupForm()})
+    .catch(function(){closeSheet();toast('Couldn\'t reach GitHub. Check your connection.')});
+}
+var PIN_INPUT=' type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" placeholder="••••••"';
+function pinForm(){
+  openSheet('Admin','<form data-form="pin" novalidate><label class="f" for="pin">Enter your 6-digit PIN</label><input id="pin" name="pin"'+PIN_INPUT+' style="font-size:28px;letter-spacing:.4em;text-align:center" autofocus>'
+    +'<div class="err" id="ferr"></div><div class="actions"><button type="submit" class="btn">Unlock</button></div>'
+    +'<button type="button" class="btn ghost" style="width:100%;margin-top:10px" data-act="resetup">Set up with a new token</button></form>');
+}
+function setupForm(){
+  openSheet('Admin setup','<form data-form="setup" novalidate><p class="hint" style="font-size:14px;margin:6px 0 0">One-time setup. Paste your GitHub token and enter your PIN. After this, the PIN is all you need on any phone.</p>'
+    +'<label class="f" for="tok">GitHub token</label><input id="tok" name="tok" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…" autofocus>'
+    +'<label class="f" for="p1">PIN</label><input id="p1" name="p1"'+PIN_INPUT+' style="font-size:28px;letter-spacing:.4em;text-align:center">'
+    +'<div class="err" id="ferr"></div><div class="actions"><button type="submit" class="btn">Unlock</button></div></form>');
+}
+function unlockWith(t){token=t;ls('trip-token',t);canWrite=true;closeSheet();return load().then(function(){render();toast('Admin mode on')})}
+function submitPin(f){
+  var pin=String(new FormData(f).get('pin')||'').trim();if(!/^\d{6}$/.test(pin))return formErr('Enter all 6 digits.');
+  setBusy(true);
+  pinMatches(pin).then(function(ok){if(!ok)throw new Error('Wrong PIN.');return openToken(lockInfo.data,pin)}).then(function(t){
+    return fetch(API,{headers:{'Accept':'application/vnd.github+json','Authorization':'Bearer '+t},cache:'no-store'}).then(function(r){
+      if(r.status===401)throw new Error('The PIN is right, but the saved GitHub token has expired. Tap "Set up with a new token".');
+      return unlockWith(t);
+    });
+  },function(e){throw new Error(e&&e.message==='Wrong PIN.'?e.message:'Your saved setup uses an old PIN. Tap "Set up with a new token".')}).catch(function(e){formErr(e.message);setBusy(false)});
+}
+function submitSetup(f){
+  var fd=new FormData(f),t=String(fd.get('tok')||'').trim(),p1=String(fd.get('p1')||''),p2=String(fd.get('p2')||'');
+  if(!t)return formErr('Paste your GitHub token.');
+  if(!/^\d{6}$/.test(p1))return formErr('Enter all 6 digits of the PIN.');
+  setBusy(true);
+  var h={'Accept':'application/vnd.github+json','Authorization':'Bearer '+t};
+  pinMatches(p1).then(function(ok){if(!ok)throw new Error('Wrong PIN.');return fetch(API,{headers:h,cache:'no-store'})}).then(function(r){
+    if(r.status===401)throw new Error('That token isn\'t valid.');
+    if(!r.ok)throw new Error('This token can\'t see the '+CONFIG.repo+' repo.');
+    return fetch(API+'/contents/'+LOCK+'?ref='+CONFIG.branch+'&t='+Date.now(),{headers:h,cache:'no-store'});
+  }).then(function(r){return r.ok?r.json():null}).then(function(existing){
+    return sealToken(t,p1).then(function(lk){
+      var body={message:'Set admin PIN',content:b64enc(JSON.stringify(lk)),branch:CONFIG.branch};if(existing&&existing.sha)body.sha=existing.sha;
+      return fetch(API+'/contents/'+LOCK,{method:'PUT',headers:Object.assign({'Content-Type':'application/json'},h),body:JSON.stringify(body)});
+    });
+  }).then(function(r){
+    if(!r.ok)throw new Error(r.status===403||r.status===404?'The token needs Contents read and write access to '+CONFIG.repo+'.':'Couldn\'t save the PIN ('+r.status+').');
+    return unlockWith(t);
+  }).catch(function(e){formErr(e.message||'Couldn\'t save the PIN. Try again.');setBusy(false)});
+}
+
+function expenseForm(id){
+  var t=state.trip,e=null;state.expenses.forEach(function(x){if(x.id===id)e=x});
+  var d=e||{date:todayISO(),cat:state.categories[0]&&state.categories[0].id,pay:'UPI',pre:false,note:''};
+  var codes=[t.currency];if(t.fx&&t.fx.code&&t.fx.rate>0&&codes.indexOf(t.fx.code)<0)codes.push(t.fx.code);
+  if(e&&e.orig&&codes.indexOf(e.orig.code)<0)codes.push(e.orig.code);
+  var curCode=e&&e.orig?e.orig.code:t.currency,amtVal=e?(e.orig?e.orig.amt:e.amount):'';
+  var cats=state.categories.map(function(k){return'<label class="chip"><input type="radio" name="cat" value="'+esc(k.id)+'"'+(d.cat===k.id?' checked':'')+'><span>'+esc(k.name)+'</span></label>'}).join('');
+  var pays=PAY.map(function(p){return'<label class="chip"><input type="radio" name="pay" value="'+p+'"'+(d.pay===p?' checked':'')+'><span>'+p+'</span></label>'}).join('');
+  openSheet(e?'Edit expense':'Add expense','<form data-form="expense" data-id="'+esc(e?e.id:'')+'" novalidate>'
+    +'<label class="f" for="amt">Amount</label><div class="amt"><input id="amt" name="amt" type="number" inputmode="decimal" step="any" min="0" placeholder="0" value="'+esc(amtVal)+'" autofocus>'
+    +(codes.length>1?'<select name="code" aria-label="Currency">'+codes.map(function(cd){return'<option'+(cd===curCode?' selected':'')+'>'+cd+'</option>'}).join('')+'</select>':'<input type="hidden" name="code" value="'+esc(t.currency)+'">')+'</div>'
+    +'<span class="f">Category</span><div class="chips">'+cats+'</div>'
+    +'<label class="f" for="note">Note</label><input id="note" name="note" maxlength="80" placeholder="e.g. Dinner at the beach shack" value="'+esc(d.note)+'">'
+    +'<span class="f">Paid with</span><div class="chips">'+pays+'</div>'
+    +'<label class="f" for="date">Date</label><input id="date" name="date" type="date" value="'+esc(d.date)+'">'
+    +'<label class="check"><input type="checkbox" name="pre"'+(d.pre?' checked':'')+'>Booked before the trip (tickets, hotel)</label>'
+    +'<div class="err" id="ferr"></div><div class="actions">'+(e?'<button type="button" class="btn ghost" data-act="delete" data-id="'+esc(e.id)+'">Delete</button>':'')+'<button type="submit" class="btn">'+(e?'Save changes':'Save expense')+'</button></div></form>');
+}
+function settingsForm(){
+  var t=state.trip;
+  var cur=function(sel,none){return(none?'<option value="">None</option>':'')+CURRENCIES.map(function(c){return'<option'+(c===sel?' selected':'')+'>'+c+'</option>'}).join('')};
+  var lims=state.categories.map(function(k){return'<div class="lim"><span>'+esc(k.name)+'</span><input type="number" inputmode="decimal" min="0" step="any" name="lim-'+esc(k.id)+'" placeholder="No limit" value="'+(k.limit||'')+'" aria-label="'+esc(k.name)+' limit"></div>'}).join('');
+  openSheet('Trip settings','<form data-form="settings" novalidate>'
+    +'<label class="f" for="s-name">Trip name</label><input id="s-name" name="name" maxlength="40" value="'+esc(t.name)+'">'
+    +'<label class="f" for="s-mem">Who\'s on the trip</label><input id="s-mem" name="members" value="'+esc(t.members.join(', '))+'"><div class="hint">Names separated by commas.</div>'
+    +'<div class="two"><div><label class="f" for="s-budget">Total budget</label><input id="s-budget" name="budget" type="number" inputmode="decimal" min="0" step="any" value="'+(budget()||'')+'" placeholder="0"></div>'
+    +'<div><label class="f" for="s-cur">Currency</label><select id="s-cur" name="currency">'+cur(t.currency)+'</select></div></div><div class="hint">Change this any time, for example when more money is added.</div>'
+    +'<div class="two"><div><label class="f" for="s-start">Start date</label><input id="s-start" name="start" type="date" value="'+esc(t.start)+'"></div><div><label class="f" for="s-end">End date</label><input id="s-end" name="end" type="date" value="'+esc(t.end)+'"></div></div>'
+    +'<span class="f">Spending in another currency?</span><div class="two"><select name="fxcode" aria-label="Foreign currency">'+cur(t.fx&&t.fx.code,true)+'</select><input name="fxrate" type="number" inputmode="decimal" min="0" step="any" placeholder="Rate" aria-label="Exchange rate" value="'+(t.fx&&t.fx.rate||'')+'"></div><div class="hint">Rate is how much 1 unit of that currency is worth in your main currency.</div>'
+    +'<span class="f">Category limits</span>'+lims
+    +'<label class="f" for="s-new">Add a category</label><input id="s-new" name="newcat" maxlength="24" placeholder="e.g. Tips">'
+    +'<div class="err" id="ferr"></div><div class="actions"><button type="submit" class="btn">Save trip settings</button></div>'
+    +'<button type="button" class="btn ghost" style="width:100%;margin-top:10px" data-act="lock">Lock editing on this device</button></form>');
+}
+
+function formErr(m){if(m==='Failed to fetch'||/NetworkError|Load failed/.test(m))m='Couldn\'t reach GitHub. Check your connection and try again.';var el=document.getElementById('ferr');if(el)el.textContent=m}
+function setBusy(b){var s=host.querySelector('button[type=submit]');if(s){s.disabled=b;if(b){s.dataset.l=s.textContent;s.textContent='Saving…'}else if(s.dataset.l)s.textContent=s.dataset.l}}
+function toast(m){var el=document.createElement('div');el.className='toast';el.setAttribute('role','status');el.textContent=m;document.body.appendChild(el);setTimeout(function(){el.remove()},2800)}
+
+function submitExpense(f){
+  var t=state.trip,fd=new FormData(f),amt=parseFloat(fd.get('amt'));
+  if(!(amt>0))return formErr('Enter an amount above zero.');
+  var cat=fd.get('cat');if(!cat)return formErr('Pick a category.');
+  var code=fd.get('code')||t.currency,id=f.dataset.id,old=null;state.expenses.forEach(function(x){if(x.id===id)old=x});
+  var amount=amt,orig=null;
+  if(code!==t.currency){var rate=t.fx&&t.fx.code===code&&t.fx.rate>0?t.fx.rate:(old&&old.orig&&old.orig.code===code?old.amount/old.orig.amt:0);
+    if(!(rate>0))return formErr('Set an exchange rate for '+code+' in trip settings.');amount=Math.round(amt*rate*100)/100;orig={amt:amt,code:code}}
+  var e={id:id||uid(),date:fd.get('date')||todayISO(),amount:amount,orig:orig,cat:cat,note:String(fd.get('note')||'').trim(),pay:fd.get('pay')||'UPI',pre:!!fd.get('pre'),t:old?old.t:Date.now()};
+  var next=clone(state);
+  if(id)next.expenses=next.expenses.map(function(x){return x.id===id?e:x});else next.expenses.push(e);
+  save(next,id?'Expense updated':'Expense added');
+}
+function submitSettings(f){
+  var fd=new FormData(f),next=clone(state),t=next.trip;
+  var bud=parseFloat(fd.get('budget'));if(!(bud>0))return formErr('Enter a total budget above zero.');
+  var start=fd.get('start')||'',end=fd.get('end')||'';
+  if(start&&end&&end<start)return formErr('The end date is before the start date.');
+  var mem=String(fd.get('members')||'').split(',').map(function(s){return s.trim()}).filter(Boolean).filter(function(v,i,a){return a.indexOf(v)===i});
+  var fxcode=fd.get('fxcode')||'',fxrate=parseFloat(fd.get('fxrate'))||0;
+  if(fxcode&&!(fxrate>0))return formErr('Enter an exchange rate for '+fxcode+'.');
+  t.name=String(fd.get('name')||'').trim()||'Our trip';t.currency=fd.get('currency')||'INR';t.start=start;t.end=end;t.members=mem.length?mem:['Me'];
+  t.budget=bud;delete t.contribution;
+  t.fx={code:fxcode===t.currency?'':fxcode,rate:fxcode===t.currency?0:fxrate};
+  next.categories.forEach(function(k){var v=parseFloat(fd.get('lim-'+k.id));k.limit=v>0?v:0});
+  var nc=String(fd.get('newcat')||'').trim();
+  if(nc)next.categories.push({id:'c'+Date.now().toString(36),name:nc,limit:0});
+  save(next,'Trip settings saved');
+}
+
+document.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-act]');if(!b)return;var a=b.dataset.act;
+  if(a==='scrim'){if(ev.target===b&&!saving)closeSheet();return}
+  if(a==='close'){if(!saving)closeSheet()}
+  else if(a==='resetup')setupForm();
+  else if(a==='add'&&canWrite)expenseForm(null);
+  else if(a==='edit'&&canWrite)expenseForm(b.dataset.id);
+  else if(a==='settings'&&canWrite)settingsForm();
+  else if(a==='lock'){if(confirm('Remove editing from this device? You\'ll need the token to unlock it again.')){closeSheet();lock();toast('Editing locked')}}
+  else if(a==='delete'&&canWrite){if(!confirm('Delete this expense?'))return;var next=clone(state);next.expenses=next.expenses.filter(function(x){return x.id!==b.dataset.id});save(next,'Expense deleted')}
+});
+document.addEventListener('submit',function(ev){var f=ev.target;ev.preventDefault();if(saving)return;formErr('');
+  if(f.dataset.form==='expense')submitExpense(f);else if(f.dataset.form==='settings')submitSettings(f);else if(f.dataset.form==='pin')submitPin(f);else if(f.dataset.form==='setup')submitSetup(f)});
+document.addEventListener('input',function(ev){if(ev.target.id==='q'){q=ev.target.value;renderList()}});
+document.addEventListener('change',function(ev){if(ev.target.id==='cf'){catFilter=ev.target.value;renderList()}});
+var taps=[];
+document.addEventListener('click',function(ev){if(canWrite||!ev.target.closest('.ring-wrap'))return;var now=Date.now();taps=taps.filter(function(t){return now-t<3000});taps.push(now);if(taps.length>=5){taps=[];if(!host.innerHTML)adminTap()}});
+['gesturestart','gesturechange','gestureend'].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});
+document.addEventListener('touchmove',function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&host.innerHTML&&!saving)closeSheet()});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&!saving)load()});
+setInterval(function(){if(document.visibilityState==='visible'&&!saving&&!host.innerHTML)load()},90000);
+
+render();
+load();
+})();
+</script>
+</body>
+</html>
