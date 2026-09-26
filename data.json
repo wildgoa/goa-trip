@@ -293,6 +293,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790411531375
+  },
+  {
+   "id": "emui6357u2t2r",
+   "date": "2026-09-26",
+   "amount": 150,
+   "orig": null,
+   "cat": "food",
+   "note": "Fruit bowl",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790413695786
   }
  ]
 }
