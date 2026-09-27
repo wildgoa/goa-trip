@@ -403,6 +403,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790448280185
+  },
+  {
+   "id": "emujrv0yzepzd",
+   "date": "2026-09-27",
+   "amount": 4430,
+   "orig": null,
+   "cat": "food",
+   "note": "Lunch",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790510734763
   }
  ]
 }
