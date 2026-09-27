@@ -414,6 +414,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790510734763
+  },
+  {
+   "id": "emujsan5h6asq",
+   "date": "2026-09-27",
+   "amount": 240,
+   "orig": null,
+   "cat": "food",
+   "note": "Nimbuuuuuu",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790511463349
   }
  ]
 }
