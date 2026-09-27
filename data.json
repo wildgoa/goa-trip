@@ -425,6 +425,17 @@
    "pay": "UPI",
    "pre": false,
    "t": 1790511463349
+  },
+  {
+   "id": "emuk4rtazeuqy",
+   "date": "2026-09-27",
+   "amount": 260,
+   "orig": null,
+   "cat": "misc",
+   "note": "",
+   "pay": "UPI",
+   "pre": false,
+   "t": 1790532419867
   }
  ]
 }
